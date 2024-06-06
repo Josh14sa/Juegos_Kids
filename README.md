@@ -1,4 +1,4 @@
 
 
 
-                                                          PROYECTO DE RESERVA DE SALAS INFANTILES
+                    PROYECTO DE RESERVA DE SALAS INFANTILES
