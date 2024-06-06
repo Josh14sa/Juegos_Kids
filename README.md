@@ -8,10 +8,12 @@ Reserva de salas de juegos.
 Selección de juegos por edad recomendada.
 Gestión de reservas por parte de los clientes.
 Horarios flexibles para adaptarse a las necesidades de los usuarios. ⏰
+
 Tecnologías Utilizadas
 Frontend: Angular y Bootstrap.
 Backend: Java con Spring Boot.
 Base de Datos: MySQL. 🛠️
+
 Instalación
 Clona el repositorio.
 Instala las dependencias usando npm install.
