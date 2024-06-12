@@ -12,13 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Cliente")
-public class Clientes {
+@Table(name = "Empleado")
+public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cliente")
-    private int idCliente;
+    @Column(name = "id_empleado")
+    private int idEmpleado;
 
     @Column(name = "nombre")
     private String nombre;
@@ -41,6 +41,10 @@ public class Clientes {
     @Column(name = "telefono")
     private String telefono;
 
-    @OneToMany(mappedBy = "cliente")
+    @ManyToOne
+    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
+    private Rol rol;
+
+    @OneToMany(mappedBy = "empleado")
     private List<Reservas> reservas;
 }

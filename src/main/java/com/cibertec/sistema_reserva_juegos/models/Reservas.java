@@ -2,47 +2,48 @@ package com.cibertec.sistema_reserva_juegos.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.dialect.TiDBDialect;
+
+
+import java.sql.Time;
 import java.util.Date;
+
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Reserva")
-@Table(name = "reservas")
+@Entity
+@Table(name = "Reserva")
 public class Reservas {
 
     @Id
-    @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idReseva;
+    @Column(name = "id_reserva")
+    private int idReserva;
 
-    @Column(name = "FechaReserva")
-    private Date fechaReserva;
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
+    private Clientes cliente;
 
-    @Column(name = "FechaInicio")
-    private Date fechaInicio;
+    @ManyToOne
+    @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
+    private Empleado empleado;
 
-    @Column(name = "FechaFin")
-    private Date fechaFin;
+    @ManyToOne
+    @JoinColumn(name = "id_sala", referencedColumnName = "id_sala")
+    private Salas sala;
 
-    @Column(name = "DuracionReserva")
-    private double duracionReserva;
+    @Column(name = "fecha")
+    private Date fecha;
 
-    @Column(name = "CantidadNinos")
+    @Column(name = "hora_inicio")
+    private Time horaInicio;
+
+    @Column(name = "hora_fin")
+    private Time horaFin;
+
+    @Column(name = "cantidad_ninos")
     private int cantidadNinos;
-
-    @Column(name = "CantidadAdultos")
-    private int cantidadAdultos;
-
-    @ManyToOne
-    @JoinColumn(name = "id_cliente") private Clientes reservaCliente;
-
-    /*@ManyToOne
-    @JoinColumn(name = "id_empleado") private Empleados reservaEmpleado;
-
-    @ManyToOne
-    @JoinColumn(name = "id_tarifa") private Tarifas reservaTarifa;*/
-
 }
