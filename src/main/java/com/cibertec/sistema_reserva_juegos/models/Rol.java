@@ -1,5 +1,6 @@
 package com.cibertec.sistema_reserva_juegos.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,7 +8,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -20,8 +20,9 @@ public class Rol {
     private int idRol;
 
     @Column(name = "nombre_rol")
-    private String nombreRol;
+    private String nombre;
 
-    @OneToMany(mappedBy = "rol")
+    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Empleado> empleados;
 }

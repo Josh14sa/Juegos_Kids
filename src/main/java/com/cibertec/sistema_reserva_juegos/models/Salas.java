@@ -1,5 +1,6 @@
 package com.cibertec.sistema_reserva_juegos.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,10 +32,13 @@ public class Salas {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @ManyToOne
-    @JoinColumn(name = "id_tarifa", referencedColumnName = "id_tarifa")
-    private Tarifa tarifa;
-
-    @OneToMany(mappedBy = "sala")
+    @OneToMany(mappedBy = "sala", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Reservas> reservas;
+
+    // Relación con Tarifa
+    @OneToOne(mappedBy = "sala", cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_tarifa") // Esta anotación se usa para personalizar la columna de unión
+    private Tarifa tarifa; // Asegúrate de que coincide con el mappedBy en Tarifa
+
 }

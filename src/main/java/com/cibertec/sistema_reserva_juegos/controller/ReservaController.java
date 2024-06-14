@@ -1,8 +1,6 @@
 package com.cibertec.sistema_reserva_juegos.controller;
 
-import com.cibertec.sistema_reserva_juegos.models.Clientes;
 import com.cibertec.sistema_reserva_juegos.models.Reservas;
-import com.cibertec.sistema_reserva_juegos.service.ClienteService;
 import com.cibertec.sistema_reserva_juegos.service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/consultas")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class ReservaController {
 
     @Autowired

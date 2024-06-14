@@ -1,14 +1,14 @@
 package com.cibertec.sistema_reserva_juegos.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -30,7 +30,7 @@ public class Empleado {
     private String dni;
 
     @Column(name = "fecha_nacimiento")
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
 
     @Column(name = "direccion")
     private String direccion;
@@ -42,9 +42,11 @@ public class Empleado {
     private String telefono;
 
     @ManyToOne
-    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
+    @JoinColumn(name = "id_rol")
+    @JsonManagedReference
     private Rol rol;
 
-    @OneToMany(mappedBy = "empleado")
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Reservas> reservas;
 }
