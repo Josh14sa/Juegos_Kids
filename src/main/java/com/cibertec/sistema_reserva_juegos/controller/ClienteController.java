@@ -44,7 +44,14 @@ public class ClienteController {
         return data;
     }
 
-    git 
+    /*@GetMapping("/clientesApellido")
+    public List<Clientes> listarClientesApellido(@RequestParam("apellido") String apellido){
+        List<Clientes> data = clienteService.listarClienteXApellido(apellido+"%");
+        return data;
+    }*/clear
+
+
+
 
     
 }
